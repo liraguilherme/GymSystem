@@ -2,6 +2,7 @@ package models;
 
 
 import jakarta.persistence.*;
+import models.DTOS.PlanDTO;
 
 import java.util.Objects;
 
@@ -19,10 +20,10 @@ public class PlanModel {
     public PlanModel() {
     }
 
-    public PlanModel(String name, Double value, String description) {
-        this.name = name;
-        this.value = value;
-        this.description = description;
+    public PlanModel(PlanDTO planDTO) {
+        this.name = planDTO.name();
+        this.value = planDTO.price();
+        this.description = planDTO.description();
     }
 
     public Integer getId() {
@@ -41,20 +42,20 @@ public class PlanModel {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Double getValue() {
         return value;
     }
 
     public void setValue(Double value) {
         this.value = value;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

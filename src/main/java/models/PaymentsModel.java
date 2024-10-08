@@ -6,9 +6,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "titles")
+@Table(name = "titulos")
 public class PaymentsModel {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,17 +36,16 @@ public class PaymentsModel {
     @Column(name = "estornado")
     private boolean reversed;
 
-    public PaymentsModel() {
+    public PaymentsModel(ClientModel clientModel, PlanModel planModel, double valorPagar, double juros, String s) {
     }
 
-    public PaymentsModel(ClientModel client, PlanModel plan, Double amountPaid, Double fees, LocalDate paymentDate, String paymentMethod, boolean reversed) {
-        this.client = client;
+    public PaymentsModel(ClientModel client, PlanModel plan, Double amountPaid, Double fees, LocalDate paymentDate, String paymentMethod){
         this.plan = plan;
         this.amountPaid = amountPaid;
-        Fees = fees;
-        this.paymentDate = paymentDate;
+        this.Fees = fees;
+        this.paymentDate = LocalDate.now();
         this.paymentMethod = paymentMethod;
-        this.reversed = reversed;
+        this.reversed = false;
     }
 
     public Integer getId() {
@@ -66,20 +64,20 @@ public class PaymentsModel {
         this.client = client;
     }
 
-    public PlanModel getPlan() {
-        return plan;
-    }
-
-    public void setPlan(PlanModel plan) {
-        this.plan = plan;
-    }
-
     public Double getAmountPaid() {
         return amountPaid;
     }
 
     public void setAmountPaid(Double amountPaid) {
         this.amountPaid = amountPaid;
+    }
+
+    public PlanModel getPlan() {
+        return plan;
+    }
+
+    public void setPlan(PlanModel plan) {
+        this.plan = plan;
     }
 
     public Double getFees() {

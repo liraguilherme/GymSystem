@@ -30,7 +30,7 @@ public class RegistrationModel {
     @Column(name = "matriculaAtiva")
     private Boolean activeRegistration;
 
-    public RegistrationModel() {
+    public RegistrationModel(ClientModel cliente, PlanModel plan) {
     }
 
     public RegistrationModel(LocalDate registrationDate, ClientModel client, PlanModel plan, Double amountPaid, Boolean activeRegistration) {
